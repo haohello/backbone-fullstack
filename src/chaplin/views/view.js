@@ -130,7 +130,6 @@ LayoutManager = Backbone.View.extend({
 			 *      'region1': '.class'
 			 *      'region2': '#id'
 			 */
-			regions: null,
 			/**
 			 * Region application is the reverse; you're specifying that this view
 			 * will be inserted into the DOM at the named region. Error thrown if
