@@ -200,10 +200,10 @@ LayoutManager = Backbone.View.extend({
 								def = view.deferred();
 				/**
 				 * Ensure all nested Views are properly scrubbed if re-rendering.
-
+				 */
 				if (view.hasRendered) {
 					view._removeViews();
-				}*/
+				}
 
 				/**
 				 * This continues the render flow after `beforeRender` has completed.

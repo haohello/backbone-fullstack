@@ -12,17 +12,17 @@ var express = require('express'),
 		utils = require('./lib/utils'),
 		app = express(),
 		baseDir = config.baseDir = path.normalize(__dirname),
-		templates = baseDir + "/templates",
+		views = baseDir + "/views",
 		webroot = baseDir + "/public",
-		CheerioAdapters,
-		jQueryStub,
 		api,
 		host,
 		port,
 		stylus,
-		templates,
 		webroot,
 		_ref,
+		routes = require('./shared/routes'),
+		Application = require('./shared/application'),
+		client_app,
 		LayoutManager;
 
 
@@ -64,7 +64,7 @@ LayoutManager.configure({
 
 app.enable('trust proxy');
 
-app.set('views', templates);
+app.set('views', views);
 
 app.set('view engine', 'ejs');
 
@@ -111,11 +111,19 @@ app.use(function (req, resp, next) {
 
 app.use(function (req, resp, next) {
 	var location = new utils.Location(req, resp),
-	//events = new EventEmitter(),
-			routes = require('./shared/routes'),
-			Application = require('./shared/application'),
-			app;
-	app = new Application({
+			setSubVwKeepFn;
+
+	setSubVwKeepFn = function(vw) {
+		var subVws = vw.getViews();
+		subVws.each(function (view) {
+			/**
+			 * set the view's state to keep
+			 */
+			view.keep = true;
+		});
+	};
+
+	client_app = new Application({
 		location: location,
 		// events: events,
 		routes: routes,
@@ -123,22 +131,27 @@ app.use(function (req, resp, next) {
 		onViewRendered: function (controller, params, route, options) {
 			var vw = controller.view,
 					manager = vw.__manager__,
-					rentManager = manager.parent && manager.parent.__manager__,
-					lastParent = vw,
+					currentVw = vw,
 					html;
 
+			setSubVwKeepFn(currentVw);
+
 			while (manager.parent && manager.parent.__manager__) {
-				lastParent = manager.parent;
-				manager = manager.parent && manager.parent.__manager__;
+				currentVw = manager.parent;
+				manager = currentVw && currentVw.__manager__;
+				if(currentVw) {
+					setSubVwKeepFn(currentVw);
+				}
 			}
 
-			lastParent.render().promise().then(function () {
-				//resp.send(lastParent.$el.html());
-				resp.render('layout', { body: lastParent.$el.html() })
+			currentVw.render().promise().then(function () {
+				html = $.html(currentVw.$el);
+				resp.render('layout', { body: html })
 			});
 		}
 	});
 });
+
 
 //router(app);
 
