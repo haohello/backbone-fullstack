@@ -1,0 +1,30 @@
+{
+  "name": "backbone-fullstack",
+  "version": "0.0.1",
+  "description": "An Application Architecture Using Backbone.js to run on both front end and back end",
+  "repository": "git://github.com/haohello/backbone-fullstack.git",
+  "dependencies": {
+    "chaplin": "~0.11.3",
+    "underscore": "~1.5.2",
+    "backbone": "~1.1.0",
+    "backbone.layoutmanager": "~0.9.4",
+    "cheerio": "~0.12.4",
+    "underscore.deferred": "~0.4.0",
+    "express": "~3.4.4",
+    "normalize": "~0.3.1",
+    "connect-mongodb": "~1.1.5",
+    "mongoose": "~3.8.1",
+    "passport-local": "~0.1.6",
+    "passport": "~0.1.17",
+    "passport-facebook": "~1.0.2",
+    "passport-google-oauth": "~0.1.5",
+    "passport-twitter": "~1.0.2",
+    "mongoose-timestamp": "~0.1.1",
+    "gravatar": "~1.0.6",
+    "url": "~0.7.9",
+    "coffee-script": "~1.6.3",
+    "eventemitter2": "~0.4.13",
+    "ejs": "~0.8.5"
+  },
+  "devDependencies": {}
+}
