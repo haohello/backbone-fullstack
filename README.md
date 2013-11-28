@@ -9,3 +9,5 @@ Thanks to our friends who write the chaplin.js, backbone.layoutmanager and also 
 `npm install`
 and
 `node app.js`
+
+Please Stay tuned for more documentations and code update...
