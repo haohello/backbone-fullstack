@@ -1,4 +1,4 @@
-# backbone-fullstack
+# backbone-fullstack [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/haohello/backbone-fullstack/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Get the backbone.js (chaplin.js) App working on the server side.
 
@@ -12,5 +12,5 @@ and
 
 ### Please Stay tuned for more documentations and code update...
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/haohello/backbone-fullstack/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 
